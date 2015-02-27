@@ -294,7 +294,8 @@ class Worker(threading.Thread, _IdleObject):
                                                 include_hidden_chars=True),
                          encoding))
 
-        stdout, stderr = Popen([self._flake8_bin(), path],
+        stdout, stderr = Popen([self._flake8_bin(), '--max-line-length=100',
+                                path],
                                stdout=PIPE, stderr=PIPE).communicate()
         output = stdout if stdout else stderr
 
